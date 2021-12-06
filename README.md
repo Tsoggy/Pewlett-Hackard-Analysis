@@ -22,11 +22,20 @@ The first analysis deliverable is to produce a table with the names of all emplo
 4. finding all employees whose birthdates are in 1965
 
 #### Silver Tsunami
-There are 90,398 soon-to-be retiring employees, as you can see with the query below:
-!(Count_of_Retiring_Individuals)Resources/count_of_retiring_employees.png
+There are 90,398 retiring employees, as you can see with the query below:
+![Count_of_Retiring_Individuals](Resources/count_of_retiring_employees.png)
+There are 1,549 mentorship-eligible employees, as you can see with the query below:
+![Count of Mentorship Eligibility](Resources/count_of_mentorship_eligibility.png)
+As you can see, there are 90,398 positions to fill, and only 1,549 possible employees to mentor the new employees. There is an insufficient amount of employees to fill the mentorship roles.
 
-
-
-Summary: Provide high-level responses to the following questions, then provide two additional queries or tables that may provide more insight into the upcoming "silver tsunami."
-How many roles will need to be filled as the "silver tsunami" begins to make an impact?
-Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+### Additional Conclusions
+#### Data Issues: Missing Departments for Retirees and Mentors
+##### Retirees
+To further analyse the data, it was necessary to understand the departments that the retiring individuals would be leaving. The following query helped to add the department names to the retiring individuals:
+![Retiring_depts](Resources/retirement_depts.png)
+Unfortunately, when you group by department to count the employees, it becomes clear that not all employees retiring are associated with a department, as you can see below:
+![Count Retiring Depts](Resources/count_retirement_depts.png)
+With 57,200 retiring individuals who do not have departments listed, Pewlett Hackard will have a much more difficult time replacing them.
+##### Mentors
+When analysing the departments that the individuals who are mentorship-eligible come from, it is clear that none of these individuals have a dept_no attached to their employee records, as you can see below:
+![mentors' departments](Resources/mentors_depts.png)
