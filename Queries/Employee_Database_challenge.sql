@@ -35,7 +35,27 @@ from unique_titles
 group by title
 order by count desc;
 
+-- Find the individuals who are eligible to mentor new individuals
+select distinct on (e.emp_no)
+	e.emp_no, 
+	e.first_name, 
+	e.last_name, 
+	e.birth_date,
+	de.from_date,
+	de.to_date,
+	t.title
+into mentorship_eligibility
+from employees as e
+join dept_emp as de
+	on (e.emp_no = de.emp_no)
+join titles as t
+	on (e.emp_no = t.emp_no)
+where t.to_date = '9999-01-01' and
+	e.birth_date between '1965-01-01' and '1965-12-31'
+order by e.emp_no;
 
+-- Check the table
+select * from mentorship_eligibility
 
 
 
